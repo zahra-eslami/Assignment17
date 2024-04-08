@@ -1,3 +1,4 @@
+from functools import partial
 from PySide6.QtWidgets import QApplication
 from PySide6.QtUiTools import QUiLoader
 import math
@@ -9,19 +10,32 @@ class Calculator:
         self.operator = ''
         self.num1 = 0
 
-    def connect_number_buttons(self):
-        self.my_window.btn_num_0.clicked.connect(lambda: self.add_number('0'))
-        self.my_window.btn_num_1.clicked.connect(lambda: self.add_number('1'))
-        self.my_window.btn_num_2.clicked.connect(lambda: self.add_number('2'))
-        self.my_window.btn_num_3.clicked.connect(lambda: self.add_number('3'))
-        self.my_window.btn_num_4.clicked.connect(lambda:  self.add_number('4'))
-        self.my_window.btn_num_5.clicked.connect(lambda:  self.add_number('5'))
-        self.my_window.btn_num_6.clicked.connect(lambda:  self.add_number('6'))
-        self.my_window.btn_num_7.clicked.connect(lambda:  self.add_number('7'))
-        self.my_window.btn_num_8.clicked.connect(lambda:  self.add_number('8'))
-        self.my_window.btn_num_9.clicked.connect(lambda:  self.add_number('9'))
-        self.my_window.btn_dot.clicked.connect(lambda:  self.add_number('.'))
 
+    # def connect_number_buttons(self):
+    #     self.my_window.btn_num_0.clicked.connect(lambda: self.add_number('0'))
+    #     self.my_window.btn_num_1.clicked.connect(lambda: self.add_number('1'))
+    #     self.my_window.btn_num_2.clicked.connect(lambda: self.add_number('2'))
+    #     self.my_window.btn_num_3.clicked.connect(lambda: self.add_number('3'))
+    #     self.my_window.btn_num_4.clicked.connect(lambda:  self.add_number('4'))
+    #     self.my_window.btn_num_5.clicked.connect(lambda:  self.add_number('5'))
+    #     self.my_window.btn_num_6.clicked.connect(lambda:  self.add_number('6'))
+    #     self.my_window.btn_num_7.clicked.connect(lambda:  self.add_number('7'))
+    #     self.my_window.btn_num_8.clicked.connect(lambda:  self.add_number('8'))
+    #     self.my_window.btn_num_9.clicked.connect(lambda:  self.add_number('9'))
+    #     self.my_window.btn_dot.clicked.connect(lambda:  self.add_number('.'))
+
+    def connect_number_buttons(self):
+        self.my_window.btn_num_0.clicked.connect(partial(self.add_number,'0'))
+        self.my_window.btn_num_1.clicked.connect(partial(self.add_number,'1'))
+        self.my_window.btn_num_2.clicked.connect(partial(self.add_number,'2'))
+        self.my_window.btn_num_3.clicked.connect(partial(self.add_number,'3'))
+        self.my_window.btn_num_4.clicked.connect(partial(self.add_number,'4'))
+        self.my_window.btn_num_5.clicked.connect(partial(self.add_number,'5'))
+        self.my_window.btn_num_6.clicked.connect(partial(self.add_number,'6'))
+        self.my_window.btn_num_7.clicked.connect(partial(self.add_number,'7'))
+        self.my_window.btn_num_8.clicked.connect(partial(self.add_number,'8'))
+        self.my_window.btn_num_9.clicked.connect(partial(self.add_number,'9'))
+        self.my_window.btn_dot.clicked.connect(partial(self.add_number,'.'))
 
     def connect_operator_buttons(self):
         self.my_window.btn_sin.clicked.connect(lambda: self.trig_functions(self.my_window.btn_sin.text()))
